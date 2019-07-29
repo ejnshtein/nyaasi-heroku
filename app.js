@@ -9,7 +9,7 @@ fastify.get('/magnet/*', async (request, reply) => {
   reply.redirect(request.req.url.replace('/magnet/', ''))
 })
 
-fastify.listen(port, err => {
+fastify.listen(port, '0.0.0.0', err => {
   if (err) console.log(`Startup error: ${err.message}\n\n${err.stack}`)
 
   console.log(`Started on port - ${port}`)
