@@ -2,7 +2,7 @@ const fastify = require('fastify')()
 const port = process.env.PORT || 80
 
 fastify.get('/', (request, reply) => {
-  reply.redirect('https://github.com/ejnshtein/nyaasi-bot')
+  reply.redirect('https://github.com/ejnshtein/nyaasi-magnet-redirect')
 })
 
 fastify.get('/magnet/*', async (request, reply) => {
