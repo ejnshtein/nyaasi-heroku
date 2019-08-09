@@ -1,5 +1,13 @@
 const fastify = require('fastify')()
+const qs = require('querystring')
 const port = process.env.PORT || 80
+const tr = [
+  'http://nyaa.tracker.wf:7777/announce',
+  'udp://open.stealth.si:80/announce',
+  'udp://tracker.opentrackr.org:1337/announce',
+  'udp://tracker.coppersurfer.tk:6969/announce',
+  'udp://exodus.desync.com:6969/announce'
+]
 
 fastify.get('/', (request, reply) => {
   reply.redirect('https://github.com/ejnshtein/nyaasi-magnet-redirect')
@@ -7,6 +15,10 @@ fastify.get('/', (request, reply) => {
 
 fastify.get('/magnet/*', async (request, reply) => {
   reply.redirect(request.req.url.replace('/magnet/', ''))
+})
+fastify.get('/nyaamagnet/*', async (request, reply) => {
+  const xt = request.req.url.replace('/nyaamagnet/', '')
+  reply.redirect(`magnet:?xt=${xt}&${qs.stringify({ tr })}`)
 })
 
 fastify.listen(port, '0.0.0.0', err => {
