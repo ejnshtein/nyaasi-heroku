@@ -17,6 +17,15 @@ const trSukebei = [
   'udp://exodus.desync.com:6969/announce'
 ]
 
+fastify
+  .register(require('fastify-cors'), {
+    origin: (res, next) => next(null, true)
+  })
+  .register(require('fastify-http-proxy'), {
+    upstream: 'https://nyaa.si',
+    prefix: '/nyaasi'
+  })
+
 fastify.get('/', (request, reply) => {
   reply.redirect('https://github.com/ejnshtein/nyaasi-magnet-redirect')
 })
@@ -34,8 +43,10 @@ fastify.get('/sukebeimagnet/*', async (request, reply) => {
   reply.redirect(`magnet:?xt=${xt}&${qs.stringify({ tr: trSukebei })}`)
 })
 
-fastify.listen(port, '0.0.0.0', err => {
-  if (err) console.log(`Startup error: ${err.message}\n\n${err.stack}`)
-
-  console.log(`Started on port - ${port}`)
-})
+fastify.listen(port, '0.0.0.0')
+  .then(() => {
+    console.log(`Started on port - ${port}`)
+  })
+  .catch(err => {
+    console.log(`Startup error: ${err.message}\n\n${err.stack}`)
+  })
