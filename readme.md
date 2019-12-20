@@ -1,18 +1,12 @@
-# nyaasi magnet redirect
+# nyaasi-heroku
 
-[![nyaa.si bot](https://img.shields.io/badge/nyaa.si-bot-blue.svg)](https://github.com/ejnshtein/nyaasi-bot)
+[![nyaa.si bot](https://img.shields.io/badge/nyaa.si-bot-blue.svg)](https://github.com/ejnshtein/nyaasi-bot)  
+[![heroku app](https://img.shields.io/badge/heroku-app-blue.svg)](https://nyaasi.herokuapp.com)  
 
-This is simple `magnet` links opener for [nyaasi bot](https://github.com/ejnshtein/nyaasi-bot)  
-Because [Telegram](https:/telegram.org) doesn't support `magnet` type links I wrote this simple service, so it will be accessible from anywhere.
+This is an internet app that follows up my [Telegram Bot](https://github.com/ejnshtein/nyaasi-bot)  
 
-## Usage
+- `/nyaamagnet/:xt` will redirect to [nyaa.si](https://nyaa.si) tracker (example: `/nyaamagnet/urn:btih:3e9ce6597b8b7475395bf12855e456dff9524dcf`)  
+- `/sukebeimagnet/:xt` will redirect to [sukebei.nyaa.si](https://sukebei.nyaa.si) tracker.
+- `/nyaasi/*` will proxy your request to [nyaa.si](https://nyaa.si) without url fixes, so only plain html/rss will work
 
-Currently it's running on heroku and can be accessed by link [https://nyaasi.herokuapp.com](https://nyaasi.herokuapp.com)  
-
-To open magnent links you can use this pattern: `https://nyaasi.herokuapp.com/magnet/${your magnet link}`  
-
-OR EVEN BETTER  
-
-Use this template: `https://nyaasi.herokuapp.com/nyaamagnet/${magnet link hash}` and it will redirect to normal nyaa magnet link.
-
-That's it!
+## More soon...  
