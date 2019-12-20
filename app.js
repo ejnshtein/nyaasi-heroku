@@ -27,12 +27,9 @@ fastify
   })
 
 fastify.get('/', (request, reply) => {
-  reply.redirect('https://github.com/ejnshtein/nyaasi-magnet-redirect')
+  reply.redirect('https://github.com/ejnshtein/nyaasi-heroku')
 })
 
-fastify.get('/magnet/*', async (request, reply) => {
-  reply.redirect(request.req.url.replace('/magnet/', ''))
-})
 fastify.get('/nyaamagnet/*', async (request, reply) => {
   const xt = request.req.url.replace('/nyaamagnet/', '')
   reply.redirect(`magnet:?xt=${xt}&${qs.stringify({ tr })}`)
