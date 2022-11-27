@@ -21,10 +21,6 @@ fastify
   .register(require('fastify-cors'), {
     origin: (res, next) => next(null, true)
   })
-  .register(require('fastify-http-proxy'), {
-    upstream: 'https://nyaa.si',
-    prefix: '/nyaasi'
-  })
 
 fastify.get('/', (request, reply) => {
   reply.redirect('https://github.com/ejnshtein/nyaasi-heroku')
